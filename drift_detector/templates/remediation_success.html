@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Remediation Started</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="remediation-card">
+
+        <h1 style="color:#22c55e;">
+            ✅ Remediation Initiated
+        </h1>
+
+        <br>
+
+        <div class="detail-box">
+
+            <p><strong>Resource:</strong>
+                {{ resource }}
+            </p>
+
+            <p><strong>Action:</strong>
+                {{ action }}
+            </p>
+
+            <p><strong>Status:</strong>
+                {{ status }}
+            </p>
+
+        </div>
+
+        <br>
+
+        <a href="/"
+           class="confirm-btn">
+
+           Return To Dashboard
+
+        </a>
+
+	<div class="terraform-output-card">
+    		<h3>Terraform Output</h3>
+
+    		<pre>	
+		{{ terraform_output }}
+    	</pre>
+</div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

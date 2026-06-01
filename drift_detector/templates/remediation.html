@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>InfraGuard Remediation</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="remediation-card">
+
+        <div class="remediation-header">
+
+            <h1>🔧 Remediation Request</h1>
+
+            <p>
+                Review the detected drift before executing remediation.
+            </p>
+
+        </div>
+
+        <div class="details-grid">
+
+            <div class="detail-box">
+                <span class="label">Resource</span>
+                <span class="value">{{ resource }}</span>
+            </div>
+
+            <div class="detail-box">
+                <span class="label">Risk Level</span>
+                <span class="value risk-{{ risk|lower }}">
+                    {{ risk }}
+                </span>
+            </div>
+
+            <div class="detail-box">
+                <span class="label">Attribute</span>
+                <span class="value">{{ attribute }}</span>
+            </div>
+
+            <div class="detail-box">
+                <span class="label">Expected State</span>
+                <span class="value">{{ expected }}</span>
+            </div>
+
+            <div class="detail-box">
+                <span class="label">Current State</span>
+                <span class="value">{{ actual }}</span>
+            </div>
+
+        </div>
+
+        <div class="recommendation-box">
+
+            <h3>Recommendation</h3>
+
+            <p>
+                {{ recommendation }}
+            </p>
+
+        </div>
+
+        <div class="warning-box">
+
+            ⚠ This action may modify cloud infrastructure.
+
+        </div>
+
+        <div class="action-buttons">
+
+            <a href="/confirm_remediation/{{ finding_id }}"
+               class="confirm-btn">
+
+               ✅ Confirm Remediation
+
+            </a>
+
+            <a href="/"
+               class="cancel-btn">
+
+               ← Back
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
