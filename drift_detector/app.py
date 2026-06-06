@@ -42,6 +42,7 @@ def dashboard():
         FROM drift_findings
         WHERE scan_id = %s
         AND drift_status = 1
+        AND approval_status != "APPROVED"
         ORDER BY id DESC
     """, (latest_scan,))
 
@@ -389,5 +390,30 @@ def confirm_remediation(finding_id):
         status=status,
         terraform_output=terraform_result["output"]
     )
+@app.route("/accept_drift/<int:finding_id>")
+def accept_drift(finding_id):
+
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="2005",
+        database="infraguard"
+    )
+
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        UPDATE drift_findings
+        SET approval_status = 'APPROVED'
+        WHERE id = %s
+    """, (finding_id,))
+
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+    return redirect("/")
+
 if __name__ == "__main__":
     app.run(debug=True)

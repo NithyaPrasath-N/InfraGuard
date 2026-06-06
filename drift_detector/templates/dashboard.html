@@ -215,9 +215,11 @@
                            class="remediate-btn">
 
                             🔧 Remediate
-
-                        </a>
-
+			</a>
+			<a href="/accept_drift/{{ finding.id }}"
+   				class="remediate-btn accept-btn">
+   				✅ Accept Drift
+			</a>
                     </td>
 
                     <td>{{ finding.scan_id }}</td>

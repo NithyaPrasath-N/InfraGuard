@@ -402,3 +402,15 @@ canvas{
     transform:translateY(-2px);
     color:white;
 }
+.accept-btn{
+    background: #16a34a;
+    min-width: 100px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.remediate-btn{
+    min-width: 100px;
+   
+}
